@@ -14,5 +14,5 @@ public interface ShoeRepo extends JpaRepository <Shoe, Integer>{
 
         List<Shoe> findAllByBrand(String brand);
 
-        List<Shoe> findAllByBrand(Sort sort);
+        List<Shoe> findAllByBrand(String brand, Sort sort);
 }
