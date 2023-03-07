@@ -32,13 +32,21 @@ public class BasicShoeInfoController {
 
     // RETURNS ALL SHOE'S BASIC SHOE INFO DTO IN ASCENDING OR DESCENDING PRICE ORDER
     @GetMapping("/all-ordered-by-price-{order}")
-    public List<BasicShoeInfoDTO> getAllShoesOrderedByPrice(@PathVariable(name = "order") String order){
+    public List<BasicShoeInfoDTO> getAllShoesOrderedByPrice(@PathVariable(name = "order") String order) {
         return shoeService.getAllShoesOrderedByPrice(order);
     }
 
     // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND
     @GetMapping("/all-by-brand-{brand}")
-    public List<BasicShoeInfoDTO> getAllShoesByBrand(@PathVariable(name = "brand") String brand){
+    public List<BasicShoeInfoDTO> getAllShoesByBrand(@PathVariable(name = "brand") String brand) {
         return shoeService.getAllShoesByBrand(brand);
+    }
+
+    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND IN ASCENDING OR DESCENDING PRICE ORDER
+
+    @GetMapping("/by-brand={brand}-price-order-{order}")
+    public List<BasicShoeInfoDTO> getAllShoesByBrandOrderedByPrice(@PathVariable(name = "brand") String brand,
+                                                                   @PathVariable(name = "order") String order) {
+        return shoeService.getAllShoesByBrandOrderedByPrice(brand, order);
     }
 }
