@@ -33,4 +33,9 @@ public class BasicShoeInfoController {
     public List<BasicShoeInfoDTO> getAllShoesByAscPrice(){
         return shoeService.getAllShoesByAscPrice();
     }
+
+    @GetMapping("/all-ordered-by-price-desc")
+    public List<BasicShoeInfoDTO> getAllShoesByDescPrice(){
+        return shoeService.getAllShoesByDescPrice();
+    }
 }
