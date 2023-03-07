@@ -37,8 +37,8 @@ public class BasicShoeInfoController {
     }
 
     // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND
-    @GetMapping("/all-by-brand")
-    public List<BasicShoeInfoDTO> getAllShoesByBrand(){
-        return shoeService.getAllShoesByBrand();
+    @GetMapping("/all-by-brand-{brand}")
+    public List<BasicShoeInfoDTO> getAllShoesByBrand(@PathVariable(name = "brand") String brand){
+        return shoeService.getAllShoesByBrand(brand);
     }
 }
