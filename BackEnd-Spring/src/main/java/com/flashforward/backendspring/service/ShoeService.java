@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ShoeService {
@@ -24,15 +23,15 @@ public class ShoeService {
 
         List<Shoe> allShoes = shoeRepo.findAll();
 
-        return allShoes.stream()
-                .map(this::basicShoeInfoDTOConverter)
-                .collect(Collectors.toList());
+        return basicShoeInfoDTOConverter(allShoes);
     }
 
 
-    // CONVERTS SHOE CLASS TO BASIC SHOE INFO DTO CLASS
-    private BasicShoeInfoDTO basicShoeInfoDTOConverter(Shoe shoe) {
+    // CONVERTS LIST OF SHOE CLASS TO LIST OF BASIC_SHOE_INFO_DTO CLASS
+    private List<BasicShoeInfoDTO> basicShoeInfoDTOConverter(List<Shoe> shoes) {
 
-        return new BasicShoeInfoDTO(shoe.getId(), shoe.getName(), shoe.getBrand(), shoe.getPrice());
+        return shoes.stream()
+                .map(s -> new BasicShoeInfoDTO(s.getId(), s.getName(), s.getBrand(), s.getPrice()))
+                .toList();
     }
 }
