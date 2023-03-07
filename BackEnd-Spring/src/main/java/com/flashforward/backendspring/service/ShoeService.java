@@ -43,6 +43,14 @@ public class ShoeService {
     }
 
 
+    // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS BY BRAND
+    public List<BasicShoeInfoDTO> getAllShoesByBrand(String brand) {
+
+        List<Shoe> allShoes = shoeRepo.findAllByBrand(brand);
+
+        return basicShoeInfoDTOConverter(allShoes);
+    }
+
     // CONVERTS LIST OF SHOE CLASS TO LIST OF BASIC_SHOE_INFO_DTO CLASS
     private List<BasicShoeInfoDTO> basicShoeInfoDTOConverter(List<Shoe> shoes) {
 
