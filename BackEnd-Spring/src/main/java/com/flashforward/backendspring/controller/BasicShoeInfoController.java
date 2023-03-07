@@ -5,6 +5,7 @@ import com.flashforward.backendspring.dto.BasicShoeInfoDTO;
 import com.flashforward.backendspring.service.ShoeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,15 +30,9 @@ public class BasicShoeInfoController {
         return shoeService.getAllBasicShoeInfo();
     }
 
-    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO IN ASCENDING PRICE ORDER
-    @GetMapping("/all-ordered-by-price-asc")
-    public List<BasicShoeInfoDTO> getAllShoesByAscPrice(){
-        return shoeService.getAllShoesByAscPrice();
-    }
-
-    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO IN DESCENDING PRICE ORDER
-    @GetMapping("/all-ordered-by-price-desc")
-    public List<BasicShoeInfoDTO> getAllShoesByDescPrice(){
-        return shoeService.getAllShoesByDescPrice();
+    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO IN ASCENDING OR DESCENDING PRICE ORDER
+    @GetMapping("/all-ordered-by-price-{order}")
+    public List<BasicShoeInfoDTO> getAllShoesOrderedByPrice(@PathVariable(name = "order") String order){
+        return shoeService.getAllShoesOrderedByPrice(order);
     }
 }
