@@ -29,11 +29,13 @@ public class BasicShoeInfoController {
         return shoeService.getAllBasicShoeInfo();
     }
 
+    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO IN ASCENDING PRICE ORDER
     @GetMapping("/all-ordered-by-price-asc")
     public List<BasicShoeInfoDTO> getAllShoesByAscPrice(){
         return shoeService.getAllShoesByAscPrice();
     }
 
+    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO IN DESCENDING PRICE ORDER
     @GetMapping("/all-ordered-by-price-desc")
     public List<BasicShoeInfoDTO> getAllShoesByDescPrice(){
         return shoeService.getAllShoesByDescPrice();
