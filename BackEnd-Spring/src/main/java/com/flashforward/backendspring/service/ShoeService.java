@@ -27,10 +27,18 @@ public class ShoeService {
         return basicShoeInfoDTOConverter(allShoes);
     }
 
-
+    // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS IN ASCENDING PRICE ORDER
     public List<BasicShoeInfoDTO> getAllShoesByAscPrice() {
 
         List<Shoe> allShoes = shoeRepo.findAll(Sort.by("price").ascending());
+
+        return basicShoeInfoDTOConverter(allShoes);
+    }
+
+    // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS IN DESCENDING PRICE ORDER
+    public List<BasicShoeInfoDTO> getAllShoesByDescPrice() {
+
+        List<Shoe> allShoes = shoeRepo.findAll(Sort.by("price").descending());
 
         return basicShoeInfoDTOConverter(allShoes);
     }
@@ -42,6 +50,4 @@ public class ShoeService {
                 .map(s -> new BasicShoeInfoDTO(s.getId(), s.getName(), s.getBrand(), s.getPrice()))
                 .toList();
     }
-
-
 }
