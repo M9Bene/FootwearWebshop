@@ -29,11 +29,11 @@ public class ShoeService {
 
     // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS
     // IN ASCENDING OR DESCENDING ORDER
-    public List<BasicShoeInfoDTO> getAllShoesOrderedByPrice(String ascendingOrDescending) {
+    public List<BasicShoeInfoDTO> getAllShoesOrderedByPrice(String order) {
 
         List<Shoe> allShoes;
 
-        if (ascendingOrDescending.equals("asc")) {
+        if (order.equals("asc")) {
             allShoes = shoeRepo.findAll(Sort.by("price").ascending());
         } else {
             allShoes = shoeRepo.findAll(Sort.by("price").descending());
