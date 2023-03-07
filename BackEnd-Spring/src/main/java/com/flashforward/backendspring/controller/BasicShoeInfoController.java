@@ -35,4 +35,10 @@ public class BasicShoeInfoController {
     public List<BasicShoeInfoDTO> getAllShoesOrderedByPrice(@PathVariable(name = "order") String order){
         return shoeService.getAllShoesOrderedByPrice(order);
     }
+
+    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND
+    @GetMapping("/all-by-brand")
+    public List<BasicShoeInfoDTO> getAllShoesByBrand(){
+        return shoeService.getAllShoesByBrand();
+    }
 }
