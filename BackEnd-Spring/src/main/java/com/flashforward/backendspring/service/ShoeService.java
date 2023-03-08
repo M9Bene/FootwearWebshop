@@ -31,7 +31,7 @@ public class ShoeService {
     // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS
     // BY PRICE IN ASCENDING OR DESCENDING ORDER
     public List<BasicShoeInfoDTO> getAllShoesOrderedByPrice(String order) {
-
+// todo rename allshoes
         List<Shoe> allShoes;
 
         if (order.equals("asc")) {
@@ -45,7 +45,7 @@ public class ShoeService {
 
     // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS BY BRAND
     public List<BasicShoeInfoDTO> getAllShoesByBrand(String brand) {
-
+// todo rename allshoes
         List<Shoe> allShoes = shoeRepo.findAllByBrand(brand);
 
         return basicShoeInfoDTOConverter(allShoes);
@@ -54,7 +54,7 @@ public class ShoeService {
     // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS BY BRAND
     // BY PRICE IN ASCENDING OR DESCENDING ORDER
     public List<BasicShoeInfoDTO> getAllShoesByBrandOrderedByPrice(String brand, String order) {
-
+// todo rename allshoes
         List<Shoe> allShoes;
 
         if (order.equals("asc")) {
@@ -64,6 +64,13 @@ public class ShoeService {
         }
 
         return basicShoeInfoDTOConverter(allShoes);
+    }
+
+    // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS
+    // WITHIN GIVEN PRICE RANGE
+    public List<BasicShoeInfoDTO> getAllShoesWithinPriceRange(double minPrice, double maxPrice) {
+        List<Shoe> shoes = shoeRepo.findAllWithinPriceRange(minPrice, maxPrice);
+        return  basicShoeInfoDTOConverter(shoes);
     }
 
 
