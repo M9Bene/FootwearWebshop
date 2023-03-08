@@ -88,6 +88,15 @@ public class ShoeService {
         return  basicShoeInfoDTOConverter(shoes);
     }
 
+    // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS
+    // WITHIN GIVEN PRICE RANGE AND BY BRAND
+    public List<BasicShoeInfoDTO> getAllShoesByBrandWithinPriceRange(String brand, double minprice, double maxPrice){
+        List <Shoe> shoes = shoeRepo.findAllByBrandAndPriceIsBetween(brand, minprice, maxPrice);
+
+        return basicShoeInfoDTOConverter(shoes);
+    }
+
+
     // CONVERTS LIST OF SHOE CLASS TO LIST OF BASIC_SHOE_INFO_DTO CLASS
     private List<BasicShoeInfoDTO> basicShoeInfoDTOConverter(List<Shoe> shoes) {
 
