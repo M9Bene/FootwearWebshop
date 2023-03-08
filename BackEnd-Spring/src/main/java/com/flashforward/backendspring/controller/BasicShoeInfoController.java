@@ -65,5 +65,12 @@ public class BasicShoeInfoController {
         return shoeService.getAllShoesWithinPriceRangeOrderedByPrice(minPrice, maxPrice, order);
     }
 
+    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND AND WITHIN GIVEN PRICE RANGE
+    @GetMapping("/by-brand/{brand}/within-price/min/{min}/max/{max}")
+    public List<BasicShoeInfoDTO> getAllShoesByBrandWithinPriceRange(@PathVariable(name = "brand") String brand,
+                                                                     @PathVariable(name= "min") double minPrice,
+                                                                     @PathVariable(name = "max") double maxPrice){
+        return shoeService.getAllShoesByBrandWithinPriceRange(brand, minPrice, maxPrice);
+    }
 
 }
