@@ -73,6 +73,20 @@ public class ShoeService {
         return  basicShoeInfoDTOConverter(shoes);
     }
 
+    // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS
+    // WITHIN GIVEN PRICE RANGE AND BY PRICE IN ASCENDING OR DESCENDING ORDER
+    public List<BasicShoeInfoDTO> getAllShoesWithinPriceRangeOrderedByPrice(double minPrice, double maxPrice,
+                                                                            String order) {
+        List<Shoe> shoes;
+
+        if (order.equals("asc")){
+            shoes = shoeRepo.findAllWithinPriceRange(minPrice, maxPrice, Sort.by("price").ascending());
+        }else {
+            shoes = shoeRepo.findAllWithinPriceRange(minPrice, maxPrice, Sort.by("price").descending());
+        }
+
+        return  basicShoeInfoDTOConverter(shoes);
+    }
 
     // CONVERTS LIST OF SHOE CLASS TO LIST OF BASIC_SHOE_INFO_DTO CLASS
     private List<BasicShoeInfoDTO> basicShoeInfoDTOConverter(List<Shoe> shoes) {
