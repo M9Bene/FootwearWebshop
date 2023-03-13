@@ -33,16 +33,12 @@ public class BasicShoeInfoController {
 
 
 
-    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO IN ASCENDING OR DESCENDING PRICE ORDER
-    @GetMapping("/all/price-order/{order}")
-    public List<BasicShoeInfoDTO> getAllShoesOrderedByPrice(@PathVariable(name = "order") String order) {
-        return shoeService.getAllShoesOrderedByPrice(order);
-    }
-
-    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND
-    @GetMapping("/all/by-brand/{brand}")
-    public List<BasicShoeInfoDTO> getAllShoesByBrand(@PathVariable(name = "brand") String brand) {
-        return shoeService.getAllShoesByBrand(brand);
+    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND  ***
+    @GetMapping("/all/p-range/{min}/{max}/by/{brand}")
+    public List<BasicShoeInfoDTO> getAllShoesByBrand(@PathVariable(name = "brand") String brand,
+                                                     @PathVariable(name = "min") double minprice,
+                                                     @PathVariable(name = "max") double maxPrice) {
+        return shoeService.getAllShoesByBrand(brand, minprice, maxPrice);
     }
 
     // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND IN ASCENDING OR DESCENDING PRICE ORDER
@@ -66,13 +62,4 @@ public class BasicShoeInfoController {
                                                                             @PathVariable(name = "order") String order) {
         return shoeService.getAllShoesWithinPriceRangeOrderedByPrice(minPrice, maxPrice, order);
     }
-
-    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND AND WITHIN GIVEN PRICE RANGE
-    @GetMapping("/by-brand/{brand}/within-price/min/{min}/max/{max}")
-    public List<BasicShoeInfoDTO> getAllShoesByBrandWithinPriceRange(@PathVariable(name = "brand") String brand,
-                                                                     @PathVariable(name = "min") double minPrice,
-                                                                     @PathVariable(name = "max") double maxPrice) {
-        return shoeService.getAllShoesByBrandWithinPriceRange(brand, minPrice, maxPrice);
-    }
-
 }
