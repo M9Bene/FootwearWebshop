@@ -48,21 +48,4 @@ public class BasicShoeInfoController {
                                                                             @PathVariable(name = "order") String order) {
         return shoeService.getShoesByPriceOrder(minPrice, maxPrice, order);
     }
-
-
-    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND IN ASCENDING OR DESCENDING PRICE ORDER
-    @GetMapping("/by-brand/{brand}/price-order/{order}")
-    public List<BasicShoeInfoDTO> getAllShoesByBrandOrderedByPrice(@PathVariable(name = "brand") String brand,
-                                                                   @PathVariable(name = "order") String order) {
-        return shoeService.getAllShoesByBrandOrderedByPrice(brand, order);
-    }
-
-    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO WITHIN GIVEN PRICE RANGE
-    @GetMapping("/within-price/min/{min}/max/{max}")
-    public List<BasicShoeInfoDTO> getAllShoesWithinPriceRange(@PathVariable(name = "min") double minPrice,
-                                                              @PathVariable(name = "max") double maxprice) {
-        return shoeService.getAllShoesWithinPriceRange(minPrice, maxprice);
-    }
-
-
 }
