@@ -33,7 +33,7 @@ public class BasicShoeInfoController {
 
 
 
-    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND  ***
+    // Returns all shoe's basicShoeInfoDTO within price range and by brand
     @GetMapping("/all/p-range/{min}/{max}/by/{brand}")
     public List<BasicShoeInfoDTO> getAllShoesByBrand(@PathVariable(name = "brand") String brand,
                                                      @PathVariable(name = "min") double minprice,
