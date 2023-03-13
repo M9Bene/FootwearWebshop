@@ -32,7 +32,6 @@ public class BasicShoeInfoController {
     }
 
 
-
     // Returns all shoe's basicShoeInfoDTO within price range and by brand
     @GetMapping("/all/p-range/{min}/{max}/by/{brand}")
     public List<BasicShoeInfoDTO> getAllShoesByBrand(@PathVariable(name = "brand") String brand,
@@ -40,6 +39,16 @@ public class BasicShoeInfoController {
                                                      @PathVariable(name = "max") double maxPrice) {
         return shoeService.getAllShoesByBrand(brand, minprice, maxPrice);
     }
+
+
+    // Returns all shoe's basicShoeInfoDTO within price range in ascending or descending price order
+    @GetMapping("/p-range/{min}/{max}/p-order/{order}")
+    public List<BasicShoeInfoDTO> getAllShoesWithinPriceRangeOrderedByPrice(@PathVariable(name = "min") double minPrice,
+                                                                            @PathVariable(name = "max") double maxPrice,
+                                                                            @PathVariable(name = "order") String order) {
+        return shoeService.getShoesByPriceOrder(minPrice, maxPrice, order);
+    }
+
 
     // RETURNS ALL SHOE'S BASIC SHOE INFO DTO BY BRAND IN ASCENDING OR DESCENDING PRICE ORDER
     @GetMapping("/by-brand/{brand}/price-order/{order}")
@@ -55,11 +64,5 @@ public class BasicShoeInfoController {
         return shoeService.getAllShoesWithinPriceRange(minPrice, maxprice);
     }
 
-    // RETURNS ALL SHOE'S BASIC SHOE INFO DTO WITHIN GIVEN PRICE RANGE IN ASCENDING OR DESCENDING PRICE ORDER
-    @GetMapping("/within-price/min/{min}/max/{max}/price-order/{order}")
-    public List<BasicShoeInfoDTO> getAllShoesWithinPriceRangeOrderedByPrice(@PathVariable(name = "min") double minPrice,
-                                                                            @PathVariable(name = "max") double maxPrice,
-                                                                            @PathVariable(name = "order") String order) {
-        return shoeService.getAllShoesWithinPriceRangeOrderedByPrice(minPrice, maxPrice, order);
-    }
+
 }
