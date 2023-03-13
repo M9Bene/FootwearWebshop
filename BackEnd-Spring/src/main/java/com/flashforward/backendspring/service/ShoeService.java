@@ -4,8 +4,10 @@ import com.flashforward.backendspring.dto.BasicShoeInfoDTO;
 import com.flashforward.backendspring.model.Shoe;
 import com.flashforward.backendspring.repository.ShoeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,12 +20,58 @@ public class ShoeService {
         this.shoeRepo = shoeRepo;
     }
 
-    // RETURNS ALL SHOES FROM REPO CONVERTED TO BASIC SHOE INFO DTO CLASS
-    public List<BasicShoeInfoDTO> getAllBasicShoeInfo() {
 
-        List<Shoe> allShoes = shoeRepo.findAll();
+    // Returns all shoes from repository converted into basicShoeInfoDTO class
+    // within price range
+    public List<BasicShoeInfoDTO> getAll(double minPrice, double maxPrice) {
+
+        List<Shoe> allShoes = shoeRepo.findAllByPriceIsBetween(minPrice, maxPrice);
 
         return basicShoeInfoDTOConverter(allShoes);
+    }
+
+
+    // Returns all shoes from repository converted into basicShoeInfoDTO class
+    // within price range,  by brand
+    public List<BasicShoeInfoDTO> getAllShoesByBrand(String brand, double minprice, double maxPrice) {
+
+        List<Shoe> shoes = shoeRepo.findAllByBrandAndPriceIsBetween(brand, minprice, maxPrice);
+
+        return basicShoeInfoDTOConverter(shoes);
+    }
+
+
+    // Returns all shoes from repository converted into basicShoeInfoDTO class
+    // within price range,  in ascending or descending price order
+    public List<BasicShoeInfoDTO> getShoesByPriceOrder(double minPrice, double maxPrice, String order) {
+
+        List<Shoe> shoes = new ArrayList<>();
+
+        if (order.equals("asc")) {
+            shoes = shoeRepo.findAllWithinPriceRange(minPrice, maxPrice, Sort.by("price").ascending());
+        } else if (order.equals("desc")) {
+            shoes = shoeRepo.findAllWithinPriceRange(minPrice, maxPrice, Sort.by("price").descending());
+        } // todo : add else for wrong price-order value
+
+        return basicShoeInfoDTOConverter(shoes);
+    }
+
+
+    // Returns all shoes from repository converted into basicShoeInfoDTO class
+    // within price range, by brand,  in ascending or descending price order
+    public List<BasicShoeInfoDTO> getShoesbyBrandAndPriceorder(double minPrice, double maxPrice, String brand,
+                                                               String order) {
+        List<Shoe> shoes = new ArrayList<>();
+
+        if (order.equals("asc")) {
+            shoes = shoeRepo.findAllByBrandAndPriceIsBetween(brand, minPrice, maxPrice,
+                    Sort.by("price").ascending());
+        } else if (order.equals("desc")) {
+            shoes = shoeRepo.findAllByBrandAndPriceIsBetween(brand, minPrice, maxPrice,
+                    Sort.by("price").descending());
+        }
+
+        return basicShoeInfoDTOConverter(shoes);
     }
 
 
