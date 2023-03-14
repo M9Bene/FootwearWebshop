@@ -69,7 +69,7 @@ public class ShoeService {
         } else if (order.equals("desc")) {
             shoes = shoeRepo.findAllByBrandAndPriceIsBetween(brand, minPrice, maxPrice,
                     Sort.by("price").descending());
-        }
+        }// todo : add else for wrong price-order value
 
         return basicShoeInfoDTOConverter(shoes);
     }
@@ -83,6 +83,24 @@ public class ShoeService {
 
         return basicShoeInfoDTOConverter(shoes);
     }
+
+
+    // Returns all shoes from repository converted into basicShoeInfoDTO class
+    // within price range, by size , by price order
+    public List<BasicShoeInfoDTO> getShoesBySizeAndPriceOrder(double minPrice, double maxPrice, int size, String order) {
+
+        List <Shoe> shoes = new ArrayList<>();
+
+        if(order.equals("asc")){
+            shoes = shoeRepo.findAllBySizeInPriceOrder(minPrice, maxPrice, size, Sort.by("price").ascending());
+        } else if (order.equals("desc")) {
+            shoes = shoeRepo.findAllBySizeInPriceOrder(minPrice, maxPrice, size, Sort.by("price").descending());
+        }// todo : add else for wrong price-order value
+
+        return basicShoeInfoDTOConverter(shoes);
+    }
+
+
 
     // CONVERTS LIST OF SHOE CLASS TO LIST OF BASIC_SHOE_INFO_DTO CLASS
     private List<BasicShoeInfoDTO> basicShoeInfoDTOConverter(List<Shoe> shoes) {
