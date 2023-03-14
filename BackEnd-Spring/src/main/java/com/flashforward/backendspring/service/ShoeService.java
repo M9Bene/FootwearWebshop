@@ -75,6 +75,15 @@ public class ShoeService {
     }
 
 
+    // Returns all shoes from repository converted into basicShoeInfoDTO class
+    // within price range, by size
+    public List<BasicShoeInfoDTO> getShoesBySize(double minPrice, double maxPrice, int size) {
+
+        List <Shoe> shoes = shoeRepo.findAllBySize(minPrice, maxPrice, size);
+
+        return basicShoeInfoDTOConverter(shoes);
+    }
+
     // CONVERTS LIST OF SHOE CLASS TO LIST OF BASIC_SHOE_INFO_DTO CLASS
     private List<BasicShoeInfoDTO> basicShoeInfoDTOConverter(List<Shoe> shoes) {
 
