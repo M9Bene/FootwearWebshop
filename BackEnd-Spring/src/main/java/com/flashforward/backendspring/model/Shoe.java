@@ -1,9 +1,8 @@
 package com.flashforward.backendspring.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -22,6 +21,9 @@ public class Shoe {
 
     @Column(name = "price", nullable = false)
     private double price;
+
+    @OneToMany(mappedBy = "shoe", cascade = CascadeType.ALL)
+    private List <SizeAndQuantity> sizeAndQuantity;
 
 
     public String getBrand() {
