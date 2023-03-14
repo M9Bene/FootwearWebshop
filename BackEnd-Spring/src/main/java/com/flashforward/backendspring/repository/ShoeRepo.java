@@ -17,4 +17,9 @@ public interface ShoeRepo extends JpaRepository <Shoe, Integer>{
         List<Shoe> findAllByPriceIsBetween(double minPrice, double maxPrice);
 
         List<Shoe> findAllByBrandAndPriceIsBetween(String brand, double minPrice, double maxPrice, Sort sort);
+
+
+        @Query("SELECT sh FROM Shoe sh INNER JOIN SizeAndQuantity sq ON sh.id = sq.shoe.id " +
+                "WHERE sq.size = :size AND sh.price BETWEEN :minPrice AND :maxPrice")
+        List<Shoe> findAllBySize(double minPrice, double maxPrice, int size);
 }
