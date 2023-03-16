@@ -35,8 +35,8 @@ public class BasicShoeInfoController {
     // Returns all shoe's basicShoeInfoDTO within price range and by brand
     @GetMapping("/all/p-range/{min}/{max}/by/{brand}")
     public List<BasicShoeInfoDTO> getShoesByBrand(@PathVariable(name = "brand") String brand,
-                                                     @PathVariable(name = "min") double minprice,
-                                                     @PathVariable(name = "max") double maxPrice) {
+                                                  @PathVariable(name = "min") double minprice,
+                                                  @PathVariable(name = "max") double maxPrice) {
         return shoeService.getAllShoesByBrand(brand, minprice, maxPrice);
     }
 
@@ -44,8 +44,8 @@ public class BasicShoeInfoController {
     // Returns all shoe's basicShoeInfoDTO within price range in ascending or descending price order
     @GetMapping("/p-range/{min}/{max}/p-order/{order}")
     public List<BasicShoeInfoDTO> getShoesOrderedByPrice(@PathVariable(name = "min") double minPrice,
-                                                                            @PathVariable(name = "max") double maxPrice,
-                                                                            @PathVariable(name = "order") String order) {
+                                                         @PathVariable(name = "max") double maxPrice,
+                                                         @PathVariable(name = "order") String order) {
         return shoeService.getShoesByPriceOrder(minPrice, maxPrice, order);
     }
 
@@ -55,8 +55,52 @@ public class BasicShoeInfoController {
     public List<BasicShoeInfoDTO> getShoesBybrandAndPriceOrder(@PathVariable(name = "min") double minPrice,
                                                                @PathVariable(name = "max") double maxPrice,
                                                                @PathVariable(name = "brand") String brand,
-                                                               @PathVariable(name = "order") String order){
+                                                               @PathVariable(name = "order") String order) {
 
         return shoeService.getShoesbyBrandAndPriceorder(minPrice, maxPrice, brand, order);
+    }
+
+
+    // Returns all shoe's basicShoeInfoDTO within price range by size
+    @GetMapping("/p-range/{min}/{max}/by-size/{size}")
+    public List<BasicShoeInfoDTO> getShoesBySize(@PathVariable(name = "min") double minPrice,
+                                                 @PathVariable(name = "max") double maxPrice,
+                                                 @PathVariable(name = "size") int size) {
+
+        return shoeService.getShoesBySize(minPrice, maxPrice, size);
+    }
+
+
+    // Returns all shoe's basicShoeInfoDTO within price range by size and price order
+    @GetMapping("/p-range/{min}/{max}/by-size/{size}/p-order/{order}")
+    public List<BasicShoeInfoDTO> getShoesBySizeAndPriceOrder(@PathVariable(name = "min") double minPrice,
+                                                              @PathVariable(name = "max") double maxPrice,
+                                                              @PathVariable(name = "size") int size,
+                                                              @PathVariable(name = "order") String order) {
+
+        return shoeService.getShoesBySizeAndPriceOrder(minPrice, maxPrice, size, order);
+    }
+
+
+    // Returns all shoe's basicShoeInfoDTO within price range by size and brand
+    @GetMapping("/p-range/{min}/{max}/by-size/{size}/by/{brand}")
+    public List<BasicShoeInfoDTO> getShoesBySizeAndBrand(@PathVariable(name = "min") double minprice,
+                                                         @PathVariable(name = "max") double maxprice,
+                                                         @PathVariable(name = "size") int size,
+                                                         @PathVariable(name = "brand") String brand) {
+
+        return shoeService.getShoesBySizeAndBrand(minprice, maxprice, size, brand);
+    }
+
+
+    // Returns all shoe's basicShoeInfoDTO within price range by size and brand and price order
+    @GetMapping("/p-range/{min}/{max}/by-size/{size}/by/{brand}/p-order/{order}")
+    public List<BasicShoeInfoDTO> getShoesBySizeAndBrandAndPriceOrder(@PathVariable(name = "min") double minPrice,
+                                                                      @PathVariable(name = "max") double maxPrice,
+                                                                      @PathVariable(name = "size") int size,
+                                                                      @PathVariable(name = "brand") String brand,
+                                                                      @PathVariable(name = "order") String order){
+
+        return shoeService.getShoesBySizeAndBrandAndPriceOrder(minPrice, maxPrice, size, brand, order);
     }
 }
