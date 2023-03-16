@@ -131,7 +131,7 @@ public class ShoeService {
     private List<BasicShoeInfoDTO> basicShoeInfoDTOConverter(List<Shoe> shoes) {
 
         return shoes.stream()
-                .map(s -> new BasicShoeInfoDTO(s.getId(), s.getName(), s.getBrand(), s.getPrice()))
+                .map(s -> new BasicShoeInfoDTO(s.getId(), s.getName(), s.getBrand(), s.getPrice(), s.getImgUrl()))
                 .toList();
     }
 }
