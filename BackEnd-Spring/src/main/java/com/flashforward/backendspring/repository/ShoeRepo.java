@@ -32,4 +32,9 @@ public interface ShoeRepo extends JpaRepository<Shoe, Integer> {
     @Query("SELECT sh FROM Shoe sh INNER JOIN SizeAndQuantity sq ON sh.id = sq.shoe.id " +
             "WHERE sq.size = :size AND sh.brand = :brand AND sh.price BETWEEN :minPrice AND :maxPrice")
     List<Shoe> findAllBySizeAndBrand(double minPrice, double maxPrice, int size, String brand);
+
+
+    @Query("SELECT sh FROM Shoe sh INNER JOIN SizeAndQuantity sq ON sh.id = sq.shoe.id " +
+            "WHERE sq.size = :size AND sh.brand = :brand AND sh.price BETWEEN :minPrice AND :maxPrice")
+    List<Shoe> findAllBySizeAndBrandInPriceOrder(double minPrice, double maxPrice, int size, String brand, Sort sort);
 }
