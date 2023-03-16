@@ -55,4 +55,8 @@ public class Shoe {
     public String getDetailedInfo() {
         return detailedInfo;
     }
+
+    public List<SizeAndQuantity> getSizeAndQuantity() {
+        return sizeAndQuantity;
+    }
 }
