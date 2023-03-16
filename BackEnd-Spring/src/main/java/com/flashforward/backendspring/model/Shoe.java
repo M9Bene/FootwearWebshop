@@ -22,6 +22,9 @@ public class Shoe {
     @Column(name = "price", nullable = false)
     private double price;
 
+    @Column(name = "img_url", nullable = false)
+    private String imgUrl;
+
     @OneToMany(mappedBy = "shoe", cascade = CascadeType.ALL)
     private List <SizeAndQuantity> sizeAndQuantity;
 
@@ -40,5 +43,9 @@ public class Shoe {
 
     public double getPrice() {
         return price;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
     }
 }
