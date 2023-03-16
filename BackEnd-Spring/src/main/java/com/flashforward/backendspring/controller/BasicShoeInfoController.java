@@ -71,7 +71,7 @@ public class BasicShoeInfoController {
     }
 
 
-    // Returns all shoe's basicShoeInfoDTO within price range by size
+    // Returns all shoe's basicShoeInfoDTO within price range by size and price order
     @GetMapping("/p-range/{min}/{max}/by-size/{size}/p-order/{order}")
     public List<BasicShoeInfoDTO> getShoesBySizeAndPriceOrder(@PathVariable(name = "min") double minPrice,
                                                               @PathVariable(name = "max") double maxPrice,
