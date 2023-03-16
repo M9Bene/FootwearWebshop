@@ -1,6 +1,7 @@
 package com.flashforward.backendspring.service;
 
 import com.flashforward.backendspring.dto.BasicShoeInfoDTO;
+import com.flashforward.backendspring.dto.DetailedShoeInfoDTO;
 import com.flashforward.backendspring.model.Shoe;
 import com.flashforward.backendspring.repository.ShoeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,6 +126,16 @@ public class ShoeService {
         }// todo : add else for wrong price-order value
 
         return basicShoeInfoDTOConverter(shoes);
+    }
+
+
+    // Returns shoe converted into DetailedShoeInfoDTO by id
+    public DetailedShoeInfoDTO getDetailedShoeInfoById(int id){
+
+        Shoe shoe = shoeRepo.findById(id);
+
+        return new DetailedShoeInfoDTO(shoe.getId(), shoe.getName(), shoe.getBrand(), shoe.getPrice(), shoe.getImgUrl(),
+                shoe.getDetailedInfo(), shoe.getSizeAndQuantity());
     }
 
     // CONVERTS LIST OF SHOE CLASS TO LIST OF BASIC_SHOE_INFO_DTO CLASS
