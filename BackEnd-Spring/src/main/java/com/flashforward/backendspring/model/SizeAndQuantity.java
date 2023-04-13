@@ -4,6 +4,15 @@ import jakarta.persistence.*;
 
 @Entity
 public class SizeAndQuantity {
+
+    public SizeAndQuantity() {
+    }
+
+    public SizeAndQuantity(int size, int quantity) {
+        this.size = size;
+        this.quantity = quantity;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
