@@ -57,7 +57,7 @@ public class BasicShoeInfoController {
                                                                @PathVariable(name = "brand") String brand,
                                                                @PathVariable(name = "order") String order) {
 
-        return shoeService.getShoesbyBrandAndPriceorder(minPrice, maxPrice, brand, order);
+        return shoeService.getShoesByBrandAndPriceOrder(minPrice, maxPrice, brand, order);
     }
 
 
