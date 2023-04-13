@@ -60,7 +60,7 @@ public class ShoeService {
 
     // Returns all shoes from repository converted into basicShoeInfoDTO class
     // within price range, by brand,  in ascending or descending price order
-    public List<BasicShoeInfoDTO> getShoesbyBrandAndPriceorder(double minPrice, double maxPrice, String brand,
+    public List<BasicShoeInfoDTO> getShoesByBrandAndPriceOrder(double minPrice, double maxPrice, String brand,
                                                                String order) {
         List<Shoe> shoes = new ArrayList<>();
 
