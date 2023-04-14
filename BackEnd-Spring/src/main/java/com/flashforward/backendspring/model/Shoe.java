@@ -9,6 +9,20 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 public class Shoe {
 
+
+    public Shoe() {
+    }
+
+    public Shoe(String name, String brand, double price, String imgUrl, String detailedInfo,
+                List<SizeAndQuantity> sizeAndQuantity) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.imgUrl = imgUrl;
+        this.detailedInfo = detailedInfo;
+        this.sizeAndQuantity = sizeAndQuantity;
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private int id;
@@ -29,7 +43,7 @@ public class Shoe {
     private String detailedInfo;
 
     @OneToMany(mappedBy = "shoe", cascade = CascadeType.ALL)
-    private List <SizeAndQuantity> sizeAndQuantity;
+    private List<SizeAndQuantity> sizeAndQuantity;
 
 
     public String getBrand() {
