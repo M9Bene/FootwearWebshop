@@ -72,35 +72,13 @@ li {
     display: none;
 }
 
-.drop-down-menu-items {
-    background-color: #30c496;
-    color: #282c34;
-    position: absolute;
-    right: 2rem;
-    top: 5rem;
-    min-width: 13rem;
-    border-radius: 8px;
-    display: none;
-    padding: 0;
-}
-
-.drop-down-menu-items li {
-    margin: 1rem 0;
-    display: flex;
-    justify-content: center;
-}
-
-@media (max-width: 1000px) {
+@media (max-width: 1044px) {
     .menu-items,
     .active-icon-container {
         display: none;
     }
 
     .menu-btn {
-        display: block;
-    }
-
-    .drop-down-menu-items {
         display: block;
     }
 }
@@ -110,12 +88,3 @@ li {
         font-size: 1.5rem;
     }
 }
-
-@media (max-width: 320px) {
-    .drop-down-menu-items {
-        right: auto;
-        margin: 2.5rem 0 0 0;
-        width: 100%;
-    }
-}
-
