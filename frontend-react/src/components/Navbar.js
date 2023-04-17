@@ -1,6 +1,11 @@
 import './Navbar.css';
+import {useState} from "react";
+import MenuModal from "./MenuModal";
+
 
 function Navbar() {
+
+    const [openMenuModal, setOpenMenuModal] = useState(false);
 
     return (
         <div className={"header"}>
@@ -17,9 +22,10 @@ function Navbar() {
                     <div className={"active-icon"}>login</div>
                 </div>
                 <div className={"menu-btn-container"}>
-
+                    <div onClick={() => setOpenMenuModal(!openMenuModal)} className={"menu-btn"}>menu</div>
                 </div>
             </div>
+            <MenuModal open={openMenuModal}/>
         </div>
     );
 }
