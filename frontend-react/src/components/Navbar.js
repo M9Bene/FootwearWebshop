@@ -1,6 +1,4 @@
 import './Navbar.css';
-import { FaBars, FaCartPlus, FaUser, FaCross } from "react-icons/fa"
-
 
 function Navbar() {
 
@@ -15,21 +13,12 @@ function Navbar() {
                     <li>HELP</li>
                 </ul>
                 <div className={"active-icon-container"}>
-                    <FaCartPlus className={"active-icon"}/>
-                    <FaUser className={"active-icon"}/>
+                    <div className={"active-icon"}>cart</div>
+                    <div className={"active-icon"}>login</div>
                 </div>
-                <div className={"menu-btn"}>
-                    <FaBars className={"active-icon"}/>
-                </div>
+                <div className={"menu-btn-container"}>
 
-            </div>
-            <div className={"drop-down-menu"}>
-                <ul className={"drop-down-menu-items"}>
-                    <li>HOME</li>
-                    <li>BRANDS</li>
-                    <li>ABOUT</li>
-                    <li>HELP</li>
-                </ul>
+                </div>
             </div>
         </div>
     );
