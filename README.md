@@ -4,6 +4,8 @@
 
 E-commerce website for sport shoes!
 
+~ still under construction ~
+
 ### // Tech stack: //
 #### Back-End
 - Java + Spring
