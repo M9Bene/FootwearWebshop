@@ -1,6 +1,6 @@
 import './MenuModal.css';
 
-function MenuModal({open}) {
+function MenuModal({open, close}) {
 
     if (!open) return null;
 
@@ -8,6 +8,7 @@ function MenuModal({open}) {
         <div className={"menu-modal"}>
             <div className={"drop-down-menu"}>
                 <ul className={"drop-down-menu-items"}>
+                    <div onClick={close} className={"close-icon"}>X</div>
                     <li>HOME</li>
                     <li>BRANDS</li>
                     <li>ABOUT</li>
@@ -15,6 +16,7 @@ function MenuModal({open}) {
                     <li>CART</li>
                     <li>LOGIN</li>
                 </ul>
+
             </div>
         </div>
     );
