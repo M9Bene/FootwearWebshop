@@ -16,8 +16,8 @@ function MenuModal({open, close}) {
                     <li>CART</li>
                     <li>LOGIN</li>
                 </ul>
-
             </div>
+            <div onClick={close} className={"overlay"}></div>
         </div>
     );
 }
