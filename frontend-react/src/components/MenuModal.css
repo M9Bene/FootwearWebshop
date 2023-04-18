@@ -17,6 +17,15 @@
     cursor: pointer;
 }
 
+.close-icon {
+    cursor: pointer;
+    color: crimson;
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    font-size: 1rem;
+}
+
 
 @media (max-width: 1044px) {
     .drop-down-menu-items {
