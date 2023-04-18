@@ -21,6 +21,10 @@
     cursor: pointer;
 }
 
+.drop-down-menu-items li:hover {
+    color: #30c496;
+}
+
 .close-icon {
     cursor: pointer;
     color: crimson;
