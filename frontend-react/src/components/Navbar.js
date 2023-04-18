@@ -25,7 +25,7 @@ function Navbar() {
                     <div onClick={() => setOpenMenuModal(!openMenuModal)} className={"menu-btn"}>menu</div>
                 </div>
             </div>
-            <MenuModal open={openMenuModal}/>
+            <MenuModal open={openMenuModal} close={() => setOpenMenuModal(false)}/>
         </div>
     );
 }
