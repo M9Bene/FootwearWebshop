@@ -1,5 +1,10 @@
+
+
 .App {
+  margin: 0;
   background-color: #ffffff;
-  color: #ffffff;
-  height: 100vh;
+  color: rgba(40, 44, 52, 0.75);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
