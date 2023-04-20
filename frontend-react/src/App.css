@@ -1,10 +1,16 @@
-
-
 .App {
   margin: 0;
   background-color: #ffffff;
   color: rgba(40, 44, 52, 0.75);
   min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   flex-direction: column;
+}
+
+.card-container {
+  margin: 8rem 3rem 3rem 22%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
