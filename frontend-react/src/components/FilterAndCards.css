@@ -1,0 +1,33 @@
+.middle-section {
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.filter-container {
+    justify-content: center;
+    margin: 8rem 3rem;
+    min-width: 14rem;
+}
+
+
+
+.card-container {
+    width: 70vw;
+    margin: 8rem 3rem 3rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+
+@media (max-width: 1100px) {
+    .filter-container {
+        display: none;
+    }
+
+    .card-container {
+        margin: auto;
+    }
+
+}
