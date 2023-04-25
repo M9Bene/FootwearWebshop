@@ -16,6 +16,7 @@ function FilterAndCards() {
 
 
     useEffect(() => {
+
         fetch(
             "http://localhost:8080/api/basic-shoe-info/p-range/0.0/200.0"
         )
@@ -28,17 +29,39 @@ function FilterAndCards() {
             });
     }, [filterSettings])
 
-    const handleFilterTest = (filterName, filterOption) => {
-        // todo  change  filterSettings State here with switch case  ( setFilterSettings )
+    const handleFilter = (filterName, filterOption) => {
+        switch (filterName) {
+            case "brand":
+                setFilterSettings({
+                    ...filterSettings,
+                    brand: filterOption
+                });
+                break;
+            case "size":
+                setFilterSettings({
+                    ...filterSettings,
+                    size: filterOption
+                });
+                break;
+            case "priceOrder":
+                setFilterSettings({
+                    ...filterSettings,
+                    priceOrder: filterOption
+                });
+                break;
+                // todo add price range
+            default :
+                break;
+        }
     }
 
     return (
         <div className={"middle-section"}>
             <div className={"filter-container"}>
 
-                <Filter title={"brand"} options={brandOptions} setFilter={handleFilterTest}/>
-                <Filter title={"size"} options={sizeOptions} setFilter={handleFilterTest}/>
-                <Filter title={"price order"} options={priceOrderOptions} setFilter={handleFilterTest}/>
+                <Filter title={"brand"} options={brandOptions} setFilter={handleFilter}/>
+                <Filter title={"size"} options={sizeOptions} setFilter={handleFilter}/>
+                <Filter title={"price order"} options={priceOrderOptions} setFilter={handleFilter}/>
 
             </div>
             <div className={"card-container"}>
