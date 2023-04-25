@@ -10,25 +10,43 @@ const priceOrderOptions = ["no order", "ascending", "descending"];
 
 function FilterAndCards() {
 
-    const [filterSettings, setFilterSettings] = useState({brand: "all", size: "all", priceOrder: "asc"})
+    const [filterSettings, setFilterSettings] = useState({brand: "all", size: "all", priceOrder: "no order"})
 
     const [shoes, setShoes] = useState([]);
 
 
     useEffect(() => {
 
-        fetch(
-            "http://localhost:8080/api/basic-shoe-info/p-range/0.0/200.0"
-        )
-            .then((data) => {
-                return data.json()
-            })
-            .then((data) => {
-                console.log(data);
-                setShoes(data);
-            });
-    }, [filterSettings])
+            let additionForUrl = "";
+            // if some filters selected  (their value is not equal to the default/all)
+            // then we pass them to the url we gonna fetch
+            if (filterSettings.size !== "all") {
+                additionForUrl += "/by-size/" + filterSettings.size;
+            }
+            if (filterSettings.brand !== "all") {
+                additionForUrl += "/by/" + filterSettings.brand;
+            }
+            if (filterSettings.priceOrder === "ascending") {
+                additionForUrl += "/p-order/asc";
+            } else if (filterSettings.priceOrder === "descending") {
+                additionForUrl += "/p-order/desc";
+            }
 
+            fetch(
+                "http://localhost:8080/api/basic-shoe-info/p-range/0.0/200.0" + additionForUrl
+            )
+                .then((data) => {
+                    return data.json()
+                })
+                .then((data) => {
+                    setShoes(data);
+                });
+        }
+        ,
+        [filterSettings]
+    )
+
+    // function for the filter components to use and set the filter settings state
     const handleFilter = (filterName, filterOption) => {
         switch (filterName) {
             case "brand":
@@ -43,13 +61,13 @@ function FilterAndCards() {
                     size: filterOption
                 });
                 break;
-            case "priceOrder":
+            case "price order":
                 setFilterSettings({
                     ...filterSettings,
                     priceOrder: filterOption
                 });
                 break;
-                // todo add price range
+            // todo add price range
             default :
                 break;
         }
