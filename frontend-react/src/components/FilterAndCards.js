@@ -89,7 +89,7 @@ function FilterAndCards() {
 
             </div>
             <div className={"cards-and-filter-info"}>
-
+                <div className={"filter-option-btn"}> Filter Options</div>
                 <div className={"filter-info"}>
                     <span className={"colored"}>Filters used: </span>
 
