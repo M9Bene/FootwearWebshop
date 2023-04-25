@@ -68,7 +68,6 @@ function FilterAndCards() {
                     priceOrder: filterOption
                 });
                 break;
-            // todo add price range
             case "price range":
                 setFilterSettings({
                     ...filterSettings,
@@ -91,13 +90,27 @@ function FilterAndCards() {
                 <Filter title={"price range"} setFilter={handleFilter} isRangeOption={true}/>
 
             </div>
-            <div className={"card-container"}>
+            <div className={"cards-and-filter-info"}>
 
-                {shoes.map((shoe, index) => {
-                    return (
-                        <ShoeCard key={index} shoeData={shoe}/>
-                    )
-                })}
+                <div className={"filter-info"}><span className={"colored"}>Filters used: </span>
+                    {filterSettings.brand !== "all" &&
+                        <span>  / /   brand: <span className={"colored"}>{filterSettings.brand}</span> </span>}
+                    {filterSettings.size !== "all" &&
+                        <span>  / /   size: <span className={"colored"}>{filterSettings.size}</span></span>}
+                    {filterSettings.priceOrder !== "no order" &&
+                        <span>  / /   price-order: <span
+                            className={"colored"}>{filterSettings.priceOrder}</span></span>}
+                    {Boolean(filterSettings.minPrice !== 0.0 | filterSettings.maxPrice !== 400.0) &&
+                        <span>  / /   price-range: <span className={"colored"}>custom</span></span>}
+                </div>
+
+                <div className={"card-container"}>
+                    {shoes.map((shoe, index) => {
+                        return (
+                            <ShoeCard key={index} shoeData={shoe}/>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )
