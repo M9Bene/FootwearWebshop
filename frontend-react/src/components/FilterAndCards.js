@@ -10,44 +10,45 @@ const priceOrderOptions = ["no order", "ascending", "descending"];
 
 function FilterAndCards() {
 
-    const [filterSettings, setFilterSettings] = useState({brand: "all", size: "all", priceOrder: "no order"})
+    const [filterSettings, setFilterSettings] = useState({
+        brand: "all", size: "all", priceOrder: "no order",
+        minPrice: 0.0, maxPrice: 400.0
+    })
 
     const [shoes, setShoes] = useState([]);
 
 
     useEffect(() => {
 
-            let additionForUrl = "";
-            // if some filters selected  (their value is not equal to the default/all)
-            // then we pass them to the url we gonna fetch
-            if (filterSettings.size !== "all") {
-                additionForUrl += "/by-size/" + filterSettings.size;
-            }
-            if (filterSettings.brand !== "all") {
-                additionForUrl += "/by/" + filterSettings.brand;
-            }
-            if (filterSettings.priceOrder === "ascending") {
-                additionForUrl += "/p-order/asc";
-            } else if (filterSettings.priceOrder === "descending") {
-                additionForUrl += "/p-order/desc";
-            }
-
-            fetch(
-                "http://localhost:8080/api/basic-shoe-info/p-range/0.0/200.0" + additionForUrl
-            )
-                .then((data) => {
-                    return data.json()
-                })
-                .then((data) => {
-                    setShoes(data);
-                });
+        let additionForUrl = "";
+        // if some filters selected  (their value is not equal to the default/all)
+        // then we pass them to the url that we are going to fetch
+        if (filterSettings.size !== "all") {
+            additionForUrl += "/by-size/" + filterSettings.size;
         }
-        ,
-        [filterSettings]
-    )
+        if (filterSettings.brand !== "all") {
+            additionForUrl += "/by/" + filterSettings.brand;
+        }
+        if (filterSettings.priceOrder === "ascending") {
+            additionForUrl += "/p-order/asc";
+        } else if (filterSettings.priceOrder === "descending") {
+            additionForUrl += "/p-order/desc";
+        }
+
+        fetch(
+            "http://localhost:8080/api/basic-shoe-info/p-range/"
+            + filterSettings.minPrice + "/" + filterSettings.maxPrice + additionForUrl
+        )
+            .then((data) => {
+                return data.json()
+            })
+            .then((data) => {
+                setShoes(data);
+            });
+    }, [filterSettings])
 
     // function for the filter components to use and set the filter settings state
-    const handleFilter = (filterName, filterOption) => {
+    const handleFilter = (filterName, filterOption, secondFilterOption) => {
         switch (filterName) {
             case "brand":
                 setFilterSettings({
@@ -68,6 +69,13 @@ function FilterAndCards() {
                 });
                 break;
             // todo add price range
+            case "price range":
+                setFilterSettings({
+                    ...filterSettings,
+                    minPrice: filterOption,
+                    maxPrice: secondFilterOption
+                })
+                break;
             default :
                 break;
         }
@@ -80,6 +88,7 @@ function FilterAndCards() {
                 <Filter title={"brand"} options={brandOptions} setFilter={handleFilter}/>
                 <Filter title={"size"} options={sizeOptions} setFilter={handleFilter}/>
                 <Filter title={"price order"} options={priceOrderOptions} setFilter={handleFilter}/>
+                <Filter title={"price range"} setFilter={handleFilter} isRangeOption={true}/>
 
             </div>
             <div className={"card-container"}>
