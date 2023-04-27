@@ -37,7 +37,6 @@ const DoubleSlider = ({ min, max, onChange, selectedMinValue, selectedMaxValue }
 
     // Get min and max values when their state changes with Debouncing!
     useEffect(() => {
-        console.log("slider useeffect to setstate is called")
         const setValues =  setTimeout(() => {
             // Don't let call the onChange function to set state if none of the values changed
             // --> to prevent unnecessary re-rendering
