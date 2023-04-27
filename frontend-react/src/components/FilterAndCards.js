@@ -3,21 +3,22 @@ import './FilterAndCards.css';
 import {useEffect, useState} from "react";
 import Filter from "./Filter";
 
-
+// constant options for filters
 const brandOptions = ["all", "adidas", "nike"];
 const sizeOptions = ["all", 38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 const priceOrderOptions = ["no order", "ascending", "descending"];
 
-function FilterAndCards() {
 
+function FilterAndCards() {
     const [filterSettings, setFilterSettings] = useState({
         brand: "all", size: "all", priceOrder: "no order",
         minPrice: 0.0, maxPrice: 400.0
     })
     const [shoes, setShoes] = useState([]);
+    const [openFilterModal, setOpenFilterModal] = useState(false);
 
+    // fetch function with changing url according to the filter settings
     useEffect(() => {
-
         let additionForUrl = "";
         // if some filters selected  (their value is not equal to the default/all)
         // then we pass them to the url that we are going to fetch
@@ -80,16 +81,45 @@ function FilterAndCards() {
 
     return (
         <div className={"middle-section"}>
-            <div className={"filter-container"}>
 
-                <Filter title={"brand"} options={brandOptions} setFilter={handleFilter}/>
-                <Filter title={"size"} options={sizeOptions} setFilter={handleFilter}/>
-                <Filter title={"price order"} options={priceOrderOptions} setFilter={handleFilter}/>
-                <Filter title={"price range"} setFilter={handleFilter} isRangeOption={true}/>
+            {/* Filters on the left side of the screen at wide screen */}
+            {!openFilterModal &&
+                <div className={"filter-container"}>
+                    <Filter title={"brand"} options={brandOptions} setFilter={handleFilter}
+                            selectedOption={filterSettings.brand}/>
+                    <Filter title={"size"} options={sizeOptions} setFilter={handleFilter}
+                            selectedOption={filterSettings.size}/>
+                    <Filter title={"price order"} options={priceOrderOptions} setFilter={handleFilter}
+                            selectedOption={filterSettings.priceOrder}/>
+                    <Filter title={"price range"} setFilter={handleFilter} isRangeOption={true}
+                            selectedMinValue={filterSettings.minPrice} selectedMaxValue={filterSettings.maxPrice} />
+                </div>}
 
-            </div>
+            {/* middle+right part for: cards, filter setting info and filter btn at small width screen */}
             <div className={"cards-and-filter-info"}>
-                <div className={"filter-option-btn"}> Filter Options</div>
+
+                {/*  btn for filter modal at small width screen */}
+                <div className={"filter-option-btn"}
+                     onClick={() => setOpenFilterModal(!openFilterModal)}> Filter Options
+                </div>
+
+                {/*   filters in modal at small width screen when above btn is clicked */}
+                {openFilterModal &&
+                    <div className={"filter-modal"}>
+                        <div className={"modal-filter-container"}>
+                            <Filter title={"brand"} options={brandOptions} setFilter={handleFilter}
+                                    selectedOption={filterSettings.brand}/>
+                            <Filter title={"size"} options={sizeOptions} setFilter={handleFilter}
+                                    selectedOption={filterSettings.size}/>
+                            <Filter title={"price order"} options={priceOrderOptions} setFilter={handleFilter}
+                                    selectedOption={filterSettings.priceOrder}/>
+                            <Filter title={"price range"} setFilter={handleFilter} isRangeOption={true}
+                                    selectedMinValue={filterSettings.minPrice} selectedMaxValue={filterSettings.maxPrice}/>
+                        </div>
+                        <div className={"overlay"} onClick={() => setOpenFilterModal(false)}></div>
+                    </div>}
+
+                {/*  information about selected filters */}
                 <div className={"filter-info"}>
                     <span className={"colored"}>Filters used: </span>
 
@@ -107,6 +137,7 @@ function FilterAndCards() {
                         <span>  / /   price-range: <span className={"colored"}>custom</span></span>}
                 </div>
 
+                {/*  cards for the products fetched from API */}
                 <div className={"card-container"}>
 
                     {shoes.map((shoe, index) => {
