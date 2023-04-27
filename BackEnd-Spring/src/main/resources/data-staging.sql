@@ -1,21 +1,21 @@
 INSERT INTO shoe (name, brand, price, img_url, detailed_info)
 VALUES ('Air Jordan 1 Mid Knicks', 'nike',
-        119.99, 'url1', 'this is a placeholder for a detailed info about the product');
+        119.99, 'https://i.imgur.com/Hk5SqZ8.png', 'this is a placeholder for a detailed info about the product');
 
 INSERT INTO shoe (name, brand, price, img_url, detailed_info)
-VALUES ( 'Air Jordan 1 Retro High OG Gorge Green', 'nike', 109.99, 'url2'
+VALUES ( 'Air Jordan 1 Retro High OG Gorge Green', 'nike', 109.99, 'https://i.imgur.com/W5XUjWs.png'
        , 'this is a placeholder for a detailed info about the product');
 
 INSERT INTO shoe (name, brand, price, img_url, detailed_info)
-VALUES ( 'Yeezy Boost 350 V2 Jade Ash', 'adidas', 129.99, 'url3'
+VALUES ( 'Yeezy Boost 350 V2 Jade Ash', 'adidas', 129.99, 'https://i.imgur.com/IYHTrLJ.png'
        , 'this is a placeholder for a detailed info about the product');
 
 INSERT INTO shoe (name, brand, price, img_url, detailed_info)
-VALUES ( 'Yeezy Boost 350 V2 Zebra', 'adidas', 129.99, 'url4'
+VALUES ( 'Yeezy Boost 350 V2 Zebra', 'adidas', 129.99, 'https://i.imgur.com/X4rEx5V.png'
        , 'this is a placeholder for a detailed info about the product');
 
 INSERT INTO shoe (name, brand, price, img_url, detailed_info)
-VALUES ( 'Air Jordan 6 Retro Travis Scott', 'nike', 89.99, 'url5'
+VALUES ( 'Air Jordan 6 Retro Travis Scott', 'nike', 89.99, 'https://i.imgur.com/HBkAb4J.png'
        , 'this is a placeholder for a detailed info about the product');
 
 INSERT INTO size_and_quantity (size, quantity, shoe_id)
