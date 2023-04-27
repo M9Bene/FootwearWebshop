@@ -1,5 +1,6 @@
 .filter {
     justify-content: center;
+    max-width: 20rem;
 }
 
 .filter-title {
