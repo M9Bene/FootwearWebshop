@@ -1,0 +1,39 @@
+.size-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.size {
+    background-color: rgba(40, 44, 52, 0.25);
+    padding: 4px;
+    font-size: 1.2rem;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+}
+
+.selected {
+    background-color: #30c45f;
+    scale: 1.1;
+}
+
+.quantity-info {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.purchase-btn {
+    background-color: #30c45f;
+    font-style: oblique;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 12rem;
+    border-style: solid;
+    border-radius: 8px;
+    border-color: black;
+    border-width: 1px;
+    margin-bottom: 1rem;
+}
