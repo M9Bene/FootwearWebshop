@@ -25,6 +25,7 @@
 }
 
 .purchase-btn {
+    cursor: pointer;
     background-color: #30c45f;
     font-style: oblique;
     font-weight: bold;
