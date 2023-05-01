@@ -6,8 +6,8 @@ function ShoeCard({shoeData}) {
         <div className={"card"}>
             <img className={"shoe-image"} src={shoeData.imgUrl} alt={"shoe"}/>
             <p className={"shoe-name"}>{shoeData.name}</p>
-            <p className={"shoe-info"}>{shoeData.brand}</p>
-            <p className={"shoe-info"}>{shoeData.price}</p>
+            <p className={"shoe-card-info"}>{shoeData.brand}</p>
+            <p className={"shoe-card-info"}>{shoeData.price}</p>
             <button>Detailed Info</button>
         </div>
     )
