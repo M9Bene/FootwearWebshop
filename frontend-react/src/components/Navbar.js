@@ -3,7 +3,7 @@ import {useState} from "react";
 import MenuModal from "./MenuModal";
 
 
-function Navbar() {
+function Navbar({setContent}) {
 
     const [openMenuModal, setOpenMenuModal] = useState(false);
 
@@ -12,10 +12,10 @@ function Navbar() {
             <div className="navbar">
                 <div className={"logo"}>MARCI-STORE</div>
                 <ul className={"menu-items"}>
-                    <li>HOME</li>
-                    <li>BRANDS</li>
-                    <li>ABOUT</li>
-                    <li>HELP</li>
+                    <li onClick={() => {setContent("filterAndCards")}}>HOME</li>
+                    <li onClick={() => {setContent("")}}>BRANDS</li>
+                    <li onClick={() => {setContent("aboutPage")}}>ABOUT</li>
+                    <li onClick={() => {setContent("helpPage")}}>HELP</li>
                 </ul>
                 <div className={"active-icon-container"}>
                     <div className={"active-icon"}>cart</div>
@@ -25,7 +25,7 @@ function Navbar() {
                     <div onClick={() => setOpenMenuModal(!openMenuModal)} className={"menu-btn"}>menu</div>
                 </div>
             </div>
-            <MenuModal open={openMenuModal} close={() => setOpenMenuModal(false)}/>
+            <MenuModal open={openMenuModal} close={() => setOpenMenuModal(false)} setContent={setContent}/>
         </div>
     );
 }

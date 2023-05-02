@@ -1,6 +1,6 @@
 import './ShoeCard.css'
 
-function ShoeCard({shoeData}) {
+function ShoeCard({shoeData, selectShoe}) {
 
     return (
         <div className={"card"}>
@@ -8,7 +8,7 @@ function ShoeCard({shoeData}) {
             <p className={"shoe-name"}>{shoeData.name}</p>
             <p className={"shoe-card-info"}>{shoeData.brand}</p>
             <p className={"shoe-card-info"}>{shoeData.price}</p>
-            <button>Detailed Info</button>
+            <button onClick={() => selectShoe(shoeData.id)} >Detailed Info</button>
         </div>
     )
 }

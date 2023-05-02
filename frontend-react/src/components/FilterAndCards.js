@@ -9,7 +9,7 @@ const sizeOptions = ["all", 38, 39, 40, 41, 42, 43, 44, 45, 46, 47];
 const priceOrderOptions = ["no order", "ascending", "descending"];
 
 
-function FilterAndCards() {
+function FilterAndCards({selectShoe}) {
     const [filterSettings, setFilterSettings] = useState({
         brand: "all", size: "all", priceOrder: "no order",
         minPrice: 0.0, maxPrice: 400.0
@@ -142,7 +142,7 @@ function FilterAndCards() {
 
                     {shoes.map((shoe, index) => {
                         return (
-                            <ShoeCard key={index} shoeData={shoe}/>
+                            <ShoeCard key={index} shoeData={shoe} selectShoe={selectShoe}/>
                         )
                     })}
                 </div>
