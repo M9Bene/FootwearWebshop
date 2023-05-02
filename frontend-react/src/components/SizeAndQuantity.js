@@ -1,22 +1,32 @@
 import './SizeAndQuantity.css'
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {CartContext} from "../cart_storage/CartContext";
 
 
-function SizeAndQuantity({data}) {
+function SizeAndQuantity({shoeData}) {
 
     const [selected, setSelected] = useState(null);
 
-    if (!data) {
+    const {updateCart} = useContext(CartContext);
+
+    if (!shoeData.sizeAndQuantityList) {
         return (
             <div> No Available size for this Shoe</div>
         )
     }
 
+    const handlePurchase = () => {
+        if(selected === null){
+            alert("Select a Size!");
+        } else {
+            updateCart(shoeData , shoeData.sizeAndQuantityList[selected].size, 1)
+        }
+    }
 
     return (
         <div className={"size-and-quantity-container"}>
             <div className={"size-container"}>
-                {data.map((shoe, i) => {
+                {shoeData.sizeAndQuantityList.map((shoe, i) => {
                     return (
                         <div key={i} className={i === selected ? "selected size" : "size"}
                              onClick={() => {
@@ -26,10 +36,10 @@ function SizeAndQuantity({data}) {
             </div>
             <div className={"quantity-info"}>
                 {selected === null ? <div>( Select a size! )</div>
-                    : data[selected].quantity > 1 ? <div>( In stock )</div>
+                    : shoeData.sizeAndQuantityList[selected].quantity > 1 ? <div>( In stock )</div>
                         : <div>( Last product for this size )</div>}
             </div>
-            <div className={"purchase-btn"}>Add to cart!</div>
+            <div className={"purchase-btn"} onClick={handlePurchase }>Add to cart!</div>
         </div>
     )
 }
