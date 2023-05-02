@@ -1,6 +1,6 @@
 import './MenuModal.css';
 
-function MenuModal({open, close}) {
+function MenuModal({open, close, setContent}) {
 
     if (!open) return null;
 
@@ -9,10 +9,10 @@ function MenuModal({open, close}) {
             <div className={"drop-down-menu"}>
                 <ul className={"drop-down-menu-items"}>
                     <div onClick={close} className={"close-icon"}>X</div>
-                    <li>HOME</li>
-                    <li>BRANDS</li>
-                    <li>ABOUT</li>
-                    <li>HELP</li>
+                    <li onClick={() => {setContent("filterAndCards")}}>HOME</li>
+                    <li onClick={() => {setContent("")}}>BRANDS</li>
+                    <li onClick={() => {setContent("aboutPage")}}>ABOUT</li>
+                    <li onClick={() => {setContent("helpPage")}}>HELP</li>
                     <li>CART</li>
                     <li>LOGIN</li>
                 </ul>
