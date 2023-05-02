@@ -2,21 +2,24 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ContentHolder from "./components/ContentHolder";
-import { useState} from "react";
+import {memo, useState} from "react";
 
 
 function App() {
+
 
     const [content, setContent] = useState("filterAndCards")
 
     return (
         <div className="App">
-            <Navbar setContent={setContent}/>
+            <MemoizedNavbar setContent={setContent}/>
             <ContentHolder content={content} setContent={setContent}/>
-            <Footer/>
+            <MemoizedFooter/>
         </div>
     );
 }
 
+const MemoizedNavbar = memo(Navbar);
+const MemoizedFooter = memo(Footer);
 
 export default App;
