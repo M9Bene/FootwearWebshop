@@ -10,8 +10,11 @@ function Cart() {
 
     const [cartItems, setCartItems] = useState(getAllCartItems)
     const [totalPrice, setTotalPrice] = useState(0)
+    const [isCartEmpty, setIsCartEmpty] = useState(true);
 
-    
+    useEffect(() =>{
+        Object.keys(cartItems).length === 0 ? setIsCartEmpty(true) :setIsCartEmpty(false)
+    }, [cartItems]);
 
     useEffect(
         () => {
@@ -33,12 +36,16 @@ function Cart() {
     return (
         <div className={"cart-container"}>
             <div className={"cart-title"}>Your Bag!</div>
-            <div className={"cart-cost"}>Total cost: {totalPrice.toFixed(2)}</div>
+            <div className={"cart-info"}>Total cost: {totalPrice.toFixed(2)}</div>
             <div className={"cart-item-container"}>
                 {cartItems.map((product, i) => (
                     <CartItem key={i} product={product}/>
                 ))}
             </div>
+            <div className={"cart-info"}>
+                { isCartEmpty ? (<div>Your Bag is Empty</div>) : (<button className={"purchase-btn"}>Purchase!</button>)}
+            </div>
+
         </div>
     )
 }
