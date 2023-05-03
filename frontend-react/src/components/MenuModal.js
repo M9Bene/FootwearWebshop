@@ -13,7 +13,7 @@ function MenuModal({open, close, setContent}) {
                     <li onClick={() => {setContent("")}}>BRANDS</li>
                     <li onClick={() => {setContent("aboutPage")}}>ABOUT</li>
                     <li onClick={() => {setContent("helpPage")}}>HELP</li>
-                    <li>CART</li>
+                    <li onClick={() => {setContent("cart")}}>CART</li>
                     <li>LOGIN</li>
                 </ul>
             </div>
