@@ -6,7 +6,6 @@ function DetailedShoeView({shoeId}) {
 
     const [shoeData, setShoeData] = useState([]);
 
-
     useEffect(() => {
         fetch(
             "http://localhost:8080/api/detailed-shoe-info/shoe-id/" + shoeId
@@ -34,7 +33,7 @@ function DetailedShoeView({shoeId}) {
                 <div className={"shoe-info"}>{shoeData.brand}</div>
                 <div className={"shoe-info"}>{shoeData.price} $</div>
                 <div className={"shoe-info"}>Available sizes:</div>
-                <SizeAndQuantity data={shoeData.sizeAndQuantityList}/>
+                <SizeAndQuantity shoeData={shoeData}/>
                 <div className={"shoe-info"}>Information</div>
                 <div className={"detailed-shoe-info"}>{shoeData.detailedInfo}</div>
             </div>
@@ -43,5 +42,3 @@ function DetailedShoeView({shoeId}) {
 }
 
 export default DetailedShoeView;
-
-//

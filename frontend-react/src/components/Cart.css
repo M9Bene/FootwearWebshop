@@ -1,0 +1,27 @@
+.cart-container{
+    width: 70vw;
+    margin: 3rem auto;
+}
+
+.cart-item-container {
+    margin: 4rem auto;
+}
+
+.cart-title {
+    font-size: 1.8rem;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: #30c496;
+}
+
+.cart-info {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.purchase-btn {
+    background-color: #30c45f;
+    border-radius: 8px;
+    font-size: 1.4rem;
+}
