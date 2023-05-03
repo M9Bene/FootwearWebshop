@@ -18,7 +18,7 @@ function Navbar({setContent}) {
                     <li onClick={() => {setContent("helpPage")}}>HELP</li>
                 </ul>
                 <div className={"active-icon-container"}>
-                    <div className={"active-icon"}>cart</div>
+                    <div onClick={() => {setContent("cart")}} className={"active-icon"}>cart</div>
                     <div className={"active-icon"}>login</div>
                 </div>
                 <div className={"menu-btn-container"}>
