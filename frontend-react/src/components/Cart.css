@@ -14,8 +14,14 @@
     text-decoration-color: #30c496;
 }
 
-.cart-cost {
+.cart-info {
     margin-top: 2rem;
     font-size: 1.4rem;
     text-align: center;
+}
+
+.purchase-btn {
+    background-color: #30c45f;
+    border-radius: 8px;
+    font-size: 1.4rem;
 }
