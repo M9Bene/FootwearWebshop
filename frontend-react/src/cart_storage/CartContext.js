@@ -1,11 +1,14 @@
-import {createContext, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 
 
 export const CartContext = createContext(null);
 
 export const CartContextProvider = (props) => {
 
-    const [cartItems, setCartItems] = useState([]);
+    const loadedCartItems = JSON.parse(localStorage.getItem("cart")) ;
+    // if localstorage has data for cart then use that data for state initialization otherwise empty array
+    const [cartItems, setCartItems] = useState( loadedCartItems != null ? loadedCartItems : []);
+
 
     function updateCart(shoeData, selectedSize, quantityChange){
 
@@ -50,12 +53,20 @@ export const CartContextProvider = (props) => {
         setCartItems(updatedCart);
     }
 
-    const contextValue = {cartItems, updateCart};
+    // save cart items (state) into local storage when it's data changed
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+    }, [cartItems]);
+
+    function getAllCartItems() {
+        return cartItems;
+    }
+
+    const contextValue = {updateCart, getAllCartItems};
 
     return(
         <CartContext.Provider value={contextValue}>
             {props.children}
         </CartContext.Provider>
-
     )
 }
