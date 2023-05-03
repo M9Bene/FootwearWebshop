@@ -3,6 +3,7 @@ import FilterAndCards from "./FilterAndCards";
 import DetailedShoeView from "./DetailedShoeView";
 import AboutPage from "./AboutPage";
 import HelpPage from "./HelpPage";
+import Cart from "./Cart";
 
 
 function ContentHolder({content, setContent}) {
@@ -20,6 +21,7 @@ function ContentHolder({content, setContent}) {
                 : content === "detailedView" ? <DetailedShoeView shoeId={selectedShoeId} setContent={setContent}/>
                     : content === "aboutPage" ? <AboutPage/>
                         : content === "helpPage" ? <HelpPage/>
+                            : content === "cart" ? <Cart/>
                             : <div>No content for this yet</div>}
         </div>
     )
