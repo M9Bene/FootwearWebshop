@@ -9,10 +9,11 @@ function CartItem({product}) {
     return (
         <div className={"cart-item"}>
             <img className={"cart-shoe-img"} src={product.imgUrl} alt={"shoe"}/>
-            <div className={"cart-item-info"}>
-                <div>{product.name}</div>
-                <div>size: {product.size}</div>
-                <div>quantity: {product.quantity}</div>
+            <div className={"cart-item-info-container"}>
+                <div className={"cart-item-info"}>{product.name}</div>
+                <div className={"cart-item-info"}>size: {product.size}</div>
+                <div className={"cart-item-info"}>quantity: {product.quantity}</div>
+                <div className={"cart-item-info"}>price: {(product.quantity * product.price).toFixed(2)}$</div>
             </div>
             <div className={"quantity-modifier-container"}>
 
