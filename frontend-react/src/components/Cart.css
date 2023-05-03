@@ -13,3 +13,9 @@
     text-decoration: underline;
     text-decoration-color: #30c496;
 }
+
+.cart-cost {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    text-align: center;
+}
