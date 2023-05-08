@@ -1,25 +1,25 @@
 import './DetailedShoeView.css';
 import {useEffect, useState} from "react";
 import SizeAndQuantity from "./SizeAndQuantity";
+import axios from "axios";
 
 function DetailedShoeView({shoeId}) {
 
     const [shoeData, setShoeData] = useState([]);
 
     useEffect(() => {
-        fetch(
-            "http://localhost:8080/api/detailed-shoe-info/shoe-id/" + shoeId
-        )
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                }
-                throw response;
-            })
-            .then((data) => {
-                console.log(data);
-                setShoeData(data);
-            })
+        const loadData = async () => {
+            try{
+                const response = await axios.get(
+                    "http://localhost:8080/api/detailed-shoe-info/shoe-id/" + shoeId);
+
+                setShoeData(response.data);
+            } catch (error){
+                console.log("error = " + error);
+                console.error(error);
+            }
+        }
+        loadData();
     }, [shoeId])
 
 
