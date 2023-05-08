@@ -34,7 +34,7 @@
 
 .filter-option-btn {
     background-color: #a2a2f3;
-    margin: 0;
+    margin: 0 auto;
     font-style: oblique;
     font-size: 1.4rem;
     border-radius: 6px;
@@ -44,8 +44,6 @@
     display: none;
 
     width: 14rem;
-    position: sticky;
-    left: calc(50% - 7rem);
 }
 
 
@@ -78,4 +76,7 @@
         display: block;
     }
 
+    .card-container {
+        width: 100vw;
+    }
 }

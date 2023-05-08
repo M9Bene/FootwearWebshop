@@ -11,7 +11,6 @@
     display: flex;
     justify-content: center;
     width: 50vw;
-
 }
 
 .big-shoe-img {
@@ -38,4 +37,46 @@
 
 .detailed-shoe-info {
     width: 40%;
+}
+
+@media (max-width: 1100px) {
+    .big-shoe-img {
+        width: 22rem;
+        height: 12rem;
+    }
+
+    .shoe-info {
+        font-size: 1.3rem;
+    }
+
+    .detailed-shoe-info {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .big-shoe-img {
+        width: 16rem;
+        height: 9rem;
+    }
+
+    .shoe-info {
+        font-size: 1rem;
+    }
+
+    .detailed-shoe-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-container, .image-container {
+        position: relative;
+        text-align: center;
+        width: 80vw;
+    }
+
+    .detailed-shoe-info {
+        width: 100%;
+        padding: 0 1rem 0 1rem;
+    }
 }
