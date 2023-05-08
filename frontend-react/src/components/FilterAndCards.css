@@ -78,4 +78,7 @@
         display: block;
     }
 
+    .card-container {
+        width: 100vw;
+    }
 }
