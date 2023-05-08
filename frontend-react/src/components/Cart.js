@@ -43,7 +43,7 @@ function Cart() {
                 ))}
             </div>
             <div className={"cart-info"}>
-                { isCartEmpty ? (<div>Your Bag is Empty</div>) : (<button className={"purchase-btn"}>Purchase!</button>)}
+                { isCartEmpty ? (<div>Your Bag is Empty</div>) : (<button className={"cart-purchase-btn"}>Purchase!</button>)}
             </div>
 
         </div>
