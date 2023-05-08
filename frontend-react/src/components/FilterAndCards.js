@@ -2,6 +2,7 @@ import ShoeCard from "./ShoeCard";
 import './FilterAndCards.css';
 import {useEffect, useState} from "react";
 import Filter from "./Filter";
+import axios from "axios";
 
 // constant options for filters
 const brandOptions = ["all", "adidas", "nike"];
@@ -34,16 +35,20 @@ function FilterAndCards({selectShoe}) {
             additionForUrl += "/p-order/desc";
         }
 
-        fetch(
-            "http://localhost:8080/api/basic-shoe-info/p-range/"
-            + filterSettings.minPrice + "/" + filterSettings.maxPrice + additionForUrl
-        )
-            .then((data) => {
-                return data.json()
-            })
-            .then((data) => {
-                setShoes(data);
-            });
+        const loadData = async () => {
+            try{
+                const response = await axios.get(
+                    "http://localhost:8080/api/basic-shoe-info/p-range/"
+                    + filterSettings.minPrice + "/" + filterSettings.maxPrice + additionForUrl);
+
+                setShoes(response.data);
+            } catch (error){
+                console.log("error = " + error);
+                console.error(error);
+            }
+        }
+
+        loadData();
     }, [filterSettings])
 
     // function for the filter components to use and set the filter settings state
