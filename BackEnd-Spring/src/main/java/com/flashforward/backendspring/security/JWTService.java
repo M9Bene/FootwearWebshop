@@ -49,6 +49,12 @@ public class JWTService {
                 .compact();
     }
 
+    // check if token is valid by checking expiration date and username(subject)
+    public boolean isTokenValid(String token, UserDetails userDetails){
+        final String username = extractUserName(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
     // check If given token is expired yet
     private boolean isTokenExpired(String token){
         return extractExpirationDate(token).before(new Date());
