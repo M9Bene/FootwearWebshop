@@ -49,6 +49,11 @@ public class JWTService {
                 .compact();
     }
 
+    // check If given token is expired yet
+    private boolean isTokenExpired(String token){
+        return extractExpirationDate(token).before(new Date());
+    }
+
     // get the expiration date from token
     private Date extractExpirationDate(String token) {
         return extractClaim(token, Claims::getExpiration);
