@@ -15,6 +15,12 @@ public class JWTService {
     //  a 256bit Encryption key in HEX for: sign in key
     private static final String SECRET_KEY = "66546A576E5A7234753778214125442A462D4A614E645267556B587032733576";
 
+    // get the userName from token
+    public String extractUserName(String token){
+        // subject is the username/email of the user
+        return extractClaim(token, Claims::getSubject);
+    }
+
     // get a single claim from token that we pass (as param)
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractClaims(token);
