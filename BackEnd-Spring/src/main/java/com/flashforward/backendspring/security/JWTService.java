@@ -21,7 +21,7 @@ public class JWTService {
     private static final String SECRET_KEY = "66546A576E5A7234753778214125442A462D4A614E645267556B587032733576";
 
     // get the userName from token
-    public String extractUserName(String token){
+    public String extractUserName(String token) {
         // subject is the username/email of the user
         return extractClaim(token, Claims::getSubject);
     }
@@ -33,12 +33,12 @@ public class JWTService {
     }
 
     // generates jwt token from userDetails
-    public String generateToken(UserDetails userDetails){
-        return  generateToken(new HashMap<>(), userDetails);
+    public String generateToken(UserDetails userDetails) {
+        return generateToken(new HashMap<>(), userDetails);
     }
 
     // generates jwt token from userDetails and extra claims
-    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails){
+    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
@@ -47,6 +47,11 @@ public class JWTService {
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    // get the expiration date from token
+    public Date extractExpirationDate(String token) {
+        return extractClaim(token, Claims::getExpiration);
     }
 
     // get all the claims from token
